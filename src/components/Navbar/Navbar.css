@@ -1,0 +1,39 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-name {
+    color: black;
+    text-align: center;
+    margin: 0px;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 30px;
+    font-size: 12px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: tomato;
+
+}
+
+.subscribe-btn {
+    margin-left: 20px;
+}
+
+.position{
+
+    position: sticky;
+    top: 0;
+}

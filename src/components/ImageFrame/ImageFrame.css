@@ -1,0 +1,14 @@
+.rent-text{
+    text-align: justify;
+    font-size: 15px;
+    font-weight: 490;
+}
+
+.frame{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    box-shadow: 5px 5px 15px lightgray;
+    padding: 20px;
+}
