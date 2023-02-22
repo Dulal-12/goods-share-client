@@ -16,6 +16,8 @@ import Information from './components/Information/Information';
 import Orders from './components/Orders/Orders';
 import { createContext, useState } from "react";
 import Membership from "./components/Membership/Membership";
+import PrivateRouteSubscribe from "./components/PrivateRouteSubscribe/PrivateRouteSubscribe";
+import PrivateRouteCart from "./components/PrivateRouteCart/PrivateRouteCart";
 export const memberTaka = createContext();
 export const userName = createContext();
 
@@ -40,7 +42,7 @@ function App() {
           <Route path='registration' element={<Registration></Registration>}></Route>
           <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
           <Route path="/productInformation/:productId" element={<Information></Information>}></Route>
-          <Route path="/membership" element={<Membership></Membership>}></Route>
+          <Route path='/membership' element={<PrivateRouteSubscribe><Membership/></PrivateRouteSubscribe>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>
         <Footer />

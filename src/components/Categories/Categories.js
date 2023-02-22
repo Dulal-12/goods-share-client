@@ -19,7 +19,7 @@ const Categories = ({find}) => {
                </div>
 
                <div className="d-flex justify-content-center mt-3"> 
-                   <span className="text text-center"><span style={{fontWeight:700,fontSize:'25px',color:"green"}}>Finding Best Products Now<br/> in Your Fingertips</span></span> 
+                   <span className="text text-center"><span style={{fontWeight:700,fontSize:'25px',color:"green"}}>Finding Best Products Now<br/> in Your Fingertips on Double Tap</span></span> 
                </div>
 
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import GetProducts from '../../CustomHook/getProducts';
 import GetUser from '../../CustomHook/getUser';
 import { deleteProductLocal, deleteUser, findObj, findUser } from '../../CustomHook/utilities';
@@ -141,11 +141,14 @@ const Prof = () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
+                    <Navigate to='/profile'></Navigate>
                     console.log('Success:', data);
                 })
                 .catch((error) => {
+                    <Navigate to='/profile'></Navigate>
                     console.error('Error:', error);
                 });
+           
         }
         else{
             alert("Your taka is short")
@@ -221,7 +224,7 @@ const Prof = () => {
 
             <div className="container text-center mt-5 mb-5 p-2" style={{ border: "none", boxShadow: "5px 5px 10px grey", borderRadius: "10px" }}>
                 {
-                    selectProduct.length > 0 ? <div><h3>Total price: {total}</h3><button className='add-to-cart-button' onClick={confirmOrder}>Confirm</button></div> : <p></p>
+                    selectProduct.length > 0 ? <div><h3>Total price: {total+30}</h3><button className='add-to-cart-button' onClick={confirmOrder}>Confirm</button></div> : <p></p>
                 }
             </div>
         </div>
