@@ -24,6 +24,10 @@
     padding: 20px;
     margin-left: 30px;
   }
+
+  .product-card:hover{
+    box-shadow: 5px 5px 5px lightgray;
+  }
   
   .product-card img {
     width: 100%;
@@ -67,3 +71,6 @@
     margin: 10px 0;
   }
   
+  .add-to-cart-button:hover{
+    background-color: tomato;
+  }

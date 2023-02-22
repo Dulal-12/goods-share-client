@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
         <div className='hero  mt-5 position'>
             <nav className='bg-light p-3'>
-                <h2 style={{ color: "tomato" }}>Pase</h2>
+            <li><Link style={{ textDecoration:"none"}} to="/home"><h2>Pase</h2></Link></li>
                 <ul>
                     <li><Link to='/home'>Home</Link></li>
                     <li><Link to='/product'>Product</Link></li>
