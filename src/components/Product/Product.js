@@ -5,7 +5,7 @@ import './Product.css';
 const Product = ({ product }) => {
 
     //here destruct the product
-    const { name, rentPrice, price, img} = product;
+    const { name, rentPrice, price, img } = product;
 
     //react-router hook
     const navigate = useNavigate();

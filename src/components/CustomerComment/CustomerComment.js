@@ -7,11 +7,11 @@ const CustomerComment = () => {
         <div class="review-card">
             <h2>Top Customer Review</h2>
             <div class="customer-info">
-                <img src={customer} alt=""/>
-                    <div class="customer-details">
-                        <h3>Elon Musk</h3>
-                        <p>Customer since 2023</p>
-                    </div>
+                <img src={customer} alt="" />
+                <div class="customer-details">
+                    <h3>Elon Musk</h3>
+                    <p>Customer since 2023</p>
+                </div>
             </div>
             <div class="review-details">
                 <p class="rating">&#9733; &#9733; &#9733; &#9733; &#9734;</p>

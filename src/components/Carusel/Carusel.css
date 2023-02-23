@@ -1,7 +1,8 @@
-Carousel{
+Carousel {
     display: flex;
 }
-h2{
-    color:green;
+
+h2 {
+    color: green;
     font-weight: 900;
 }

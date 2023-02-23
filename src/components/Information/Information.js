@@ -14,6 +14,7 @@ const Information = () => {
 
     const [time, setTime] = useState(1);
     const singleProduct = SingleProduct(productId);
+
     let price = 0;
 
     if (time > 14 || time < 0 || Number.isNaN(time)) {

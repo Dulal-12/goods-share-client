@@ -1,10 +1,10 @@
-.rent-text{
+.rent-text {
     text-align: justify;
     font-size: 15px;
     font-weight: 490;
 }
 
-.frame{
+.frame {
     display: flex;
     align-items: center;
     justify-content: space-between;
