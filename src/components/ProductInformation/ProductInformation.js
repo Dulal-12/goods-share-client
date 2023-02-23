@@ -32,7 +32,7 @@ const ProductInformation = ({ product,time }) => {
             .then(data => setValid(data))
             .catch(err => setValid(false))
 
-    }, [])
+    }, [infoUser])
 
 
     const addToProduct = (event) => {

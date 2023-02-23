@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import GetProducts from '../../CustomHook/getProducts';
 import GetUser from '../../CustomHook/getUser';
 import { deleteProductLocal, deleteUser, findObj, findUser } from '../../CustomHook/utilities';
@@ -222,9 +222,15 @@ const Prof = () => {
             </div>
 
 
-            <div className="container text-center mt-5 mb-5 p-2" style={{ border: "none", boxShadow: "5px 5px 10px grey", borderRadius: "10px" }}>
+            <div className="container text-center mt-5 mb-5 p-2">
                 {
-                    selectProduct.length > 0 ? <div><h3>Total price: {total+30}</h3><button className='add-to-cart-button' onClick={confirmOrder}>Confirm</button></div> : <p></p>
+                    selectProduct.length > 0 ? <div>
+                        <h3>Total price: {total+30}</h3>
+                        <button className='add-to-cart-button' onClick={confirmOrder}>Confirm</button>
+                        <br />
+                        <Link to='/cart'><button className='add-to-cart-button mt-2'>Cancel</button></Link>
+                    
+                    </div> : <p></p>
                 }
             </div>
         </div>

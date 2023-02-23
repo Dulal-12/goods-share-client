@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Login.css';
 import registration from '../../images/images/registration.jpg'
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,11 +13,27 @@ const auth = getAuth(app);
 
 const Login = () => {
 
-    const [name,setName] = useContext(userName);
+    const [name, setName] = useContext(userName);
     const [message, setMessage] = useState('');
-    const [valid , setValid] = useState(false);
+    const [valid, setValid] = useState();
+    const [user, setUser] = useState('123');
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/finduser/${user}`)
+            .then(res => res.json())
+            .then(data => {
+                setValid(data);
+            })
+      
+    }, [user]);
+
+
+    const userFind = (id) => {
+        setUser(id);
+    }
+
 
 
     const loginUser = (event) => {
@@ -28,7 +44,7 @@ const Login = () => {
 
         const email = form.email.value;
         const password = form.password.value;
-       
+
         let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!regEmail.test(email)) {
             alert("Invalid email....");
@@ -39,48 +55,42 @@ const Login = () => {
                 alert("Invalid password");
             } else {
 
-               
-                    setMessage("please wait....")
-                    signInWithEmailAndPassword(auth, email, password)
-                        .then((userCredential) => {
-                            const user = userCredential.user;
-                            console.log(user)
-                            if (!user.emailVerified) {
-                                setMessage("Your email is not verified...")
+
+                setMessage("please wait....")
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        if (!user.emailVerified) {
+                            setMessage("Your email is not verified.")
+                        }
+                        else {
+
+                             userFind(user.uid);
+                            //check here user is valid or not form database from valid user
+                            //console.log(valid);
+                            if (valid) {
+                                setMessage("Login success")
+                                setName(user.email)
+                                localStorage.setItem("email", user.email)
+                                addUser(user.uid);
+                                navigate('/profile');
                             }
                             else {
-
-                                //check here user is valid or not form database from valid user
-                                fetch(`http://localhost:4000/finduser/${user.uid}`)
-                                .then(res => res.json())
-                                .then(data => setValid(data))
-
-
-
-                                if(valid){
-
-                                    setMessage("Login success")
-                                    setName(user.email)
-                                    localStorage.setItem("email",user.email)
-                                    addUser(user.uid);
-                                    navigate('/profile');
-                                }
-                                else{
-                                    setMessage("Please wait. Admin will verify your account.")
-                                }
-
-                               
-
+                                setMessage("Please wait.Verify your account and clicked again")
                             }
 
-                        })
-                        .catch((error) => {
 
-                            const errorMessage = error.message;
-                            setMessage(errorMessage)
 
-                        });
-                
+                        }
+
+                    })
+                    .catch((error) => {
+
+                        const errorMessage = error.message;
+                        setMessage(errorMessage)
+
+                    });
+
             }
         }
 
