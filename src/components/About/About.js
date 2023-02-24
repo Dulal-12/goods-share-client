@@ -2,8 +2,35 @@ import React from 'react';
 import './About.css';
 import shipping from '../../images/images/free-shipping.png';
 import quality from '../../images/images/high-quality.png';
+import { useNavigate } from 'react-router-dom';
 
 const About = () => {
+
+    const navigate = useNavigate();
+
+    const information = (e) => {
+        e.preventDefault();
+
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const message = e.target.message.value;
+
+        const data = { name, email, message };
+
+        fetch('http://localhost:4000/userMessage', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                alert('Message sent successfully')
+                navigate('/home');
+            })
+
+        }
     return (
         <div>
             <section id="about-us">
@@ -19,19 +46,19 @@ const About = () => {
                 </div>
 
                 <div className='login mt-5 container1'>
-                    <form action="#" method="post" class="contact-form">
+                    <form onSubmit={information} class="contact-form">
                         <h2>Contact Us</h2>
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder='Name' required/>
+                            <input type="text" id="name" name="name" placeholder='Name' required />
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder='Email' required/>
+                            <input type="email" id="email" name="email" placeholder='Email' required />
                         </div>
                         <div class="form-group">
                             <textarea id="message" name="message" placeholder="message" required></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit" className='btn btn-success'>Submit</button>
+                            <input type="submit" className='btn btn-success' value="submit" />
                         </div>
                     </form>
 
