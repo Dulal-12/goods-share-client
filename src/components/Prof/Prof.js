@@ -141,12 +141,11 @@ const Prof = () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    <Navigate to='/profile'></Navigate>
-                    console.log('Success:', data);
+                    navigate('/home')
+                    alert("order successfully complete")
                 })
                 .catch((error) => {
-                    <Navigate to='/profile'></Navigate>
-                    console.error('Error:', error);
+                    alert("Server problem")
                 });
            
         }
